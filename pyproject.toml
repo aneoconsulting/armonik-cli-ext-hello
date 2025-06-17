@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning"]
+build-backend = "hatchling.build"
+
+[project]
+name = "armonik-cli-ext-hello"
+version = "0.1.0"
+requires-python = ">=3.10.12"
+# Extensions should depend on the core library, not the main CLI application.
+dependencies = ["armonik-cli-core"]
+
+# TODO: This is just for development since core hasn't been merged/published yet.
+[tool.uv.sources]
+armonik-cli-core = { git = "https://github.com/aneoconsulting/ArmoniK.CLI.git", subdirectory = "packages/armonik_cli_core", branch = "ad/extension-support" }
+# For development, use: armonik-cli-core = {path = "<path-to-armonik-cli-repo>/packages/armonik_cli_core"}
+
+# This section is mandatory for discovery.
+[project.entry-points."armonik.cli.extensions"]
+# 'hello' is the command name that will appear in the CLI.
+# 'armonik_cli_ext_hello.cli:hello_command' points to the Click object to load.
+hello = "armonik_cli_ext_hello.hello:hello_group"

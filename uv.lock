@@ -1,0 +1,19 @@
+version = 1
+revision = 1
+requires-python = ">=3.10.12"
+
+[[package]]
+name = "armonik-cli-core"
+version = "0.0.0.post112.dev0+5b78c89"
+source = { git = "https://github.com/aneoconsulting/ArmoniK.CLI.git?subdirectory=packages%2Farmonik_cli_core&branch=ad%2Fextension-support#5b78c89fbf80c2ae4ca17556ea2dbb14aa424983" }
+
+[[package]]
+name = "armonik-cli-ext-hello"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "armonik-cli-core" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "armonik-cli-core", git = "https://github.com/aneoconsulting/ArmoniK.CLI.git?subdirectory=packages%2Farmonik_cli_core&branch=ad%2Fextension-support" }]
